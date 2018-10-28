@@ -98,7 +98,7 @@ class YumeRepository {
   tick: function (t: number, dt: number) {
     const radius = 5.0;
     this.characterElements.forEach((element: any, i: number) => {
-      const theta = (t / 1500.0 - (i / this.characterElements.length * Math.PI * 2)) % (Math.PI * 2.0);
+      const theta = (t / 1000.0 - (i / this.characterElements.length * Math.PI * 2)) % (Math.PI * 2.0);
       const newY = Math.tan(theta / 2.0);
       if (element.object3D.position.y > newY) {
         this.setYume(element.components.material.shader);

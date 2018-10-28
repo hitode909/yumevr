@@ -5,6 +5,11 @@
   <script src="https://unpkg.com/aframe-html-shader@0.2.0/dist/aframe-html-shader.min.js"></script>
   <script>window.addEventListener('error', function(error) { alert(error);document.body.textContent = error;return true; });</script>
   <title>vr yume nikki</title>
+  <style>
+  body {
+    font-family: "Hiragino Sans", ヒラギノ角ゴシック, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, Helvetica, Arial, sans-serif;
+  }
+  </style>
   </head>
   <body>
   <script src= "yumevr.js" charset="utf-8"></script>
@@ -20,8 +25,8 @@
       <a-sky src="#skyTexture"></a-sky>
 
       <script>
-      for (var i = 0; i < 30; i++) {
-        document.write('<div class="character-renderer" id="char-' + i + '" style="position: fixed; left: 0; top: 0; background:transparent; z-index: -1; color: #FFF; font-size: 150px"></div>');
+      for (var i = 0; i < 20; i++) {
+        document.write('<div class="character-renderer" id="char-' + i + '" style="position: fixed; left: 0; top: 0; background:transparent; z-index: -1; color: #FFF; font-size: 200px"></div>');
         document.write('<a-entity class="character-element" geometry="primitive: plane" material="shader: html; transparent: true; target: #char-' + i + '"></a-entity>');
       }
       </script>

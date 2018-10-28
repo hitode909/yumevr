@@ -94,7 +94,7 @@
             var _this = this;
             var radius = 5.0;
             this.characterElements.forEach(function (element, i) {
-                var theta = (t / 1500.0 - (i / _this.characterElements.length * Math.PI * 2)) % (Math.PI * 2.0);
+                var theta = (t / 1000.0 - (i / _this.characterElements.length * Math.PI * 2)) % (Math.PI * 2.0);
                 var newY = Math.tan(theta / 2.0);
                 if (element.object3D.position.y > newY) {
                     _this.setYume(element.components.material.shader);
