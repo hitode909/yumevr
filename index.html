@@ -2,19 +2,24 @@
   <head>
   <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-html-shader@0.2.0/dist/aframe-html-shader.min.js"></script>
+  <title>hitode909のVR夢日記</title>
   </head>
   <body>
-  <script src= "a.js" charset="utf-8"></script>
+  <script src= "yumevr.js" charset="utf-8"></script>
     <a-scene update-html>
+    <a-assets>
+      <img id="skyTexture"
+        src="https://farm2.staticflickr.com/1974/45450124571_0ba48781b2_o_d.jpg">
+    </a-assets>
       <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
       <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
       <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
-      <a-sky color="#ECECEC"></a-sky>
+      <a-sky src="#skyTexture"></a-sky>
 
       <script>
       for (var i = 0; i < 30; i++) {
-        document.write('<div class="character-renderer" id="char-' + i + '" style="position: fixed; left: 0; top: 0; background:transparent; z-index: -1; color: #000; font-size: 100px"></div>');
+        document.write('<div class="character-renderer" id="char-' + i + '" style="position: fixed; left: 0; top: 0; background:transparent; z-index: -1; color: #FFF; font-size: 100px"></div>');
         document.write('<a-entity class="character-element" geometry="primitive: plane" material="shader: html; transparent: true; target: #char-' + i + '"></a-entity>');
       }
       </script>
