@@ -27,7 +27,7 @@ class OnMemoryEntry {
   formattedText() {
     const date = this.published;
     const body = this.body;
-    return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日の夢 ${body}`;
+    return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日の夢 ${body}  `;
   }
 }
 class YumeRepository {
@@ -36,15 +36,27 @@ class YumeRepository {
     this.entries = [];
   }
 
-  crawl() {
-    fetch('https://blog.sushi.money/feed/category/夢日記')
+  crawl(page) {
+    let query = '';
+    if (page) {
+      query = `?page=${page}`;
+    }
+    fetch('https://blog.sushi.money/feed/category/' + encodeURIComponent('夢日記') + query)
       .then(res => res.text())
       .then(text => this.parser.parseFromString(text, "text/xml"))
       .then(feed => {
-        Array.from(feed.querySelectorAll('entry')).forEach(entry => {
+        const sourceEntries = Array.from(feed.querySelectorAll('entry'));
+        sourceEntries.forEach(entry => {
           this.entries.push(new YumeEntry(entry));
         });
+        if (sourceEntries.length === 30) {
+          this.crawl(Math.floor(this.getOldestEntry().published().getTime() / 1000));
+        }
       });
+  }
+
+  getOldestEntry() {
+    return this.entries[this.entries.length - 1];
   }
 
   getRandomEntry() {
@@ -73,7 +85,8 @@ AFRAME.registerComponent('update-html', {
   },
   setYume: function (shader) {
     if (!this.yumeCharacters.length) {
-      this.yumeCharacters = Array.from(this.yumeRepository.getRandomEntry().formattedText());
+      this.yumeCharacters = this.yumeRepository.getRandomEntry().formattedText().split('');
+      console.log(this.yumeCharacters);
     }
     shader.__targetEl.innerHTML = this.yumeCharacters.shift();
     shader.__render();
@@ -81,7 +94,7 @@ AFRAME.registerComponent('update-html', {
   tick: function (t, dt) {
     radius = 5.0;
     this.characterElements.forEach((element, i) => {
-      const theta = (t / 3000.0 - (i / this.characterElements.length * Math.PI * 2)) % (Math.PI * 2.0);
+      const theta = (t / 1500.0 - (i / this.characterElements.length * Math.PI * 2)) % (Math.PI * 2.0);
       const newY = Math.tan(theta / 2.0);
       if (element.object3D.position.y > newY) {
         this.setYume(element.components.material.shader);
