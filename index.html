@@ -17,16 +17,12 @@
     <a-assets>
       <!-- <img id="skyTexture" crossorigin
         src="https://hitode909.github.io/vrmasawadahouse/static_assets/masawadahouse.jpg">  -->
-      <img id="skyTexture" crossorigin src="room.jpg">
-      <img id="bed1" crossorigin src="hitode_bed_1.png">
-      <img id="bed2" crossorigin src="hitode_bed_2.png">
-      <img id="bed3" crossorigin src="hitode_bed_3.png">
-      <img id="bed4" crossorigin src="hitode_bed_4.png">
+      <img id="skyTexture" crossorigin src="images/waterfall.jpg">
+      <img id="bed1" crossorigin src="images/hitode_bed_1.png">
+      <img id="bed2" crossorigin src="images/hitode_bed_2.png">
+      <img id="bed3" crossorigin src="images/hitode_bed_3.png">
+      <img id="bed4" crossorigin src="images/hitode_bed_4.png">
     </a-assets>
-      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
       <a-sky src="#skyTexture"></a-sky>
       <a-entity>
         <a-image src="#bed1" width="1.704" height="2.612" opacity="1.0" position="0 -0.8 0.0" rotation="90 180 0"></a-image>
@@ -34,14 +30,14 @@
         <a-image src="#bed3" width="0.791" height="0.945" opacity="1.0" position="0 -0.2 -0.6" rotation="90 180 0"></a-image>
         <a-image src="#bed4" width="1.517" height="1.935" opacity="1.0" position="0 -0.0 0.3" rotation="90 180 0"></a-image>
         <a-animation attribute="position"
-               dur="30000"
-               fill="forwards"
-               from="0 -20 0"
-               to="0 20 0"
-               direction="alternate"
-               repeat="indefinite"
-               ease="eases-in-out"
-               ></a-animation>
+          dur="20000"
+          fill="forwards"
+          from="0 -15 0"
+          to="0 15 0"
+          direction="alternate"
+          repeat="indefinite"
+          ease="eases-in-out"
+          ></a-animation>
       </a-entity>
 
       <script>
